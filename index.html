@@ -9,15 +9,23 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <p id="P_Tytul">Wisielec</p>
-    <div id="Div_Haslo">
-    <p id="P_Haslo">Podaj hasło:</p>
-    <input id="I_Haslo" type="text"><br><br>
-    <button id="B_Haslo">zatwierdź</button>
-    </div>
-    <div id="Div_Okno_Gry">
-        <img src="./wisielec_0.png" alt="Wisielec">
-    </div>
-    <script src='./main.js'></script>
+    <main class="kontener">
+        <header class="gra">
+            <p id="P_Tytul">Wisielec</p>
+        </header>
+        <section class="gra">
+            <div id="Div_Haslo">
+            <p id="P_Haslo">Podaj hasło:</p>
+            <input id="I_Haslo" type="password"><br><br>
+            <button id="B_Haslo">Zatwierdź</button>
+            </div>
+            <div id="Div_Okno_Gry">
+            <img src="./wisielec_0.png" alt="Wisielec">
+            <div class="przyciski_haslo"></div>
+            </div>
+            <script src='./main.js'></script>
+        </section>
+
+    </main>
 </body>
 </html>
