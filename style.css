@@ -1,38 +1,126 @@
 html {
-    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%
 }
 body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
     font-family: Arial, Helvetica, sans-serif;
-    position: relative;
     background-image: url('./bg.jpg');
     background-size: 45%;
-    overflow: hidden;
     min-height: 100vh;
-    padding: 0;
-    margin: 0;
     text-align: center;
 }
-#Div_Haslo {
+main,
+header,
+section {
+    display: block;
+}
+main.kontener {
     position: relative;
-    display: inline-block;
-    top: 10vh;
+    width: 560px;
+    height: auto;
+    padding: 0 20px 0 20px;
+    box-sizing: border-box;
+    margin: auto;
+    z-index: 1
+}
+
+.litera, #B_Haslo {
+    background-color: #000000;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    min-height: 60px;
+    min-width: 65px;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    margin: 5px;
+}
+
+
+.litera:disabled {
+    pointer-events: none;
+}
+  
+.litera:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+  
+.litera:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+  
+
+.przyciski_haslo {
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    text-align: center;
+}
+
+#I_Haslo {
+    width: 400px;
+    height: 25px;
+    font-size: 2em;
+    text-align: center;
+}
+
+#P_Haslo {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#litery_haslo {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+#Div_Haslo {
+    position: absolute; 
+    left: 0; 
+    right: 0; 
 }
 #Div_Okno_Gry {
-    width: 75%;
-    height: 60%;
+    position: absolute;
+    left: 0; 
+    right: 0; 
     display: none;
-    border: .5em dashed black;
-    position: relative;
+
 }
 #Div_Okno_Gry img {
-    float: left;
+    position: absolute;
+    top: 50px;
+    left: -600px;
+    width: 420px;
+    height: 420px;
+    border: 0
 }
 
 #P_Tytul {
     font-size: 6.5em;
     margin-top: 1%;
     margin-bottom: 1%;
+    font-family: "Comic Sans MS";
+    font-weight: bolder;
+    color: black;
 }
 #litery_haslo {
     letter-spacing: 10px;
 }
+
