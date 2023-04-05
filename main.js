@@ -26,10 +26,36 @@ $(document).ready(function () {
     
     $('.litera').click(function () {
       var litera = $(this).val(); 
-      console.log(litera); 
+      console.log(litera);
+      flaga = false;
+      for (let i = 0; i < dlg_haslo; i++) {
+        if(haslo[i] == litera) {
+          flaga = true;
+          litery='';
+          tab_litery[i] = litera;
+          for(let j = 0; j < dlg_haslo; j++) {
+            litery+= tab_litery[j];
+          }
+          $('#litery_haslo').text(litery);
+          odgadniete_litery++;
+          if(odgadniete_litery==dlg_haslo) {
+            //
+            //
+          }
+        } 
+      }
+      if(flaga == true) {
+        $(this).prop( "disabled", true );
+        $(this).css("background-color","green");
+        
+      }
+      if(flaga == false) {
+        $(this).prop( "disabled", true );
+        $(this).css("background-color","red");
+        
+        //
+      }
+      
     });
-<<<<<<< HEAD
+  });
 });
-=======
-});
-
