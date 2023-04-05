@@ -33,3 +33,6 @@ body {
     margin-top: 1%;
     margin-bottom: 1%;
 }
+#litery_haslo {
+    letter-spacing: 10px;
+}
