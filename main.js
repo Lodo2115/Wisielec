@@ -4,13 +4,17 @@ var haslo;
 $(document).ready(function () {
   $('#B_Haslo').click(function () {
     haslo = $('#I_Haslo').val();
+    haslo = haslo.toUpperCase();
     $('#Div_Haslo').hide();
     $('#Div_Okno_Gry').css('display','inline-block');
     var dlg_haslo = haslo.length;
-    var litery = "";
+    var tab_litery = new Array(dlg_haslo);
     console.log(dlg_haslo);
+    var litery="";
+    var odgadniete_litery=0;
     for (let i = 0; i < dlg_haslo; i++) {
-      litery += "_";
+      tab_litery[i] = "_";
+      litery+="_";
     }
     $('#Div_Okno_Gry').append("<p id='litery_haslo'>" + litery + "</p>");
 
@@ -22,8 +26,36 @@ $(document).ready(function () {
     
     $('.litera').click(function () {
       var litera = $(this).val(); 
-      console.log(litera); 
+      console.log(litera);
+      flaga = false;
+      for (let i = 0; i < dlg_haslo; i++) {
+        if(haslo[i] == litera) {
+          flaga = true;
+          litery='';
+          tab_litery[i] = litera;
+          for(let j = 0; j < dlg_haslo; j++) {
+            litery+= tab_litery[j];
+          }
+          $('#litery_haslo').text(litery);
+          odgadniete_litery++;
+          if(odgadniete_litery==dlg_haslo) {
+            //
+            //
+          }
+        } 
+      }
+      if(flaga == true) {
+        $(this).prop( "disabled", true );
+        $(this).css("background-color","green");
+        
+      }
+      if(flaga == false) {
+        $(this).prop( "disabled", true );
+        $(this).css("background-color","red");
+        
+        //
+      }
+      
     });
   });
 });
-
