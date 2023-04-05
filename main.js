@@ -16,46 +16,20 @@ $(document).ready(function () {
       tab_litery[i] = "_";
       litery+="_";
     }
-    $('#Div_Okno_Gry').append("<p id='litery_haslo'>" + litery + "</p>");
+    $('.przyciski_haslo').append("<p id='litery_haslo'>" + litery + "</p>");
 
     for (var i = 0; i < przyicski.length; i++) {
-      if (i % 5 == 0 && i != 0) $('#Div_Okno_Gry').append('<br>');
-      $('#Div_Okno_Gry').append('<button class="litera" id="' + przyicski[i] + '" value="'+przyicski[i]+'">' + przyicski[i] + '</button>');
+      if (i % 7 == 0 && i != 0) $('.przyciski_haslo').append('<br>');
+      $('.przyciski_haslo').append('<button class="litera" id="' + przyicski[i] + '" value="'+przyicski[i]+'">' + przyicski[i] + '</button>');
     }
 
     
     $('.litera').click(function () {
       var litera = $(this).val(); 
-      console.log(litera);
-      flaga = false;
-      for (let i = 0; i < dlg_haslo; i++) {
-        if(haslo[i] == litera) {
-          flaga = true;
-          litery='';
-          tab_litery[i] = litera;
-          for(let j = 0; j < dlg_haslo; j++) {
-            litery+= tab_litery[j];
-          }
-          $('#litery_haslo').text(litery);
-          odgadniete_litery++;
-          if(odgadniete_litery==dlg_haslo) {
-            //
-            //
-          }
-        } 
-      }
-      if(flaga == true) {
-        $(this).prop( "disabled", true );
-        $(this).css("background-color","green");
-        
-      }
-      if(flaga == false) {
-        $(this).prop( "disabled", true );
-        $(this).css("background-color","red");
-        
-        //
-      }
-      
+      console.log(litera); 
     });
-  });
+<<<<<<< HEAD
 });
+=======
+});
+
