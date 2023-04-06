@@ -1,5 +1,6 @@
 var przyicski = 'AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŻŹ';
 var haslo;
+var pomylki = 0;
 
 $(document).ready(function () {
   $('#B_Haslo').click(function () {
@@ -39,8 +40,7 @@ $(document).ready(function () {
           $('#litery_haslo').text(litery);
           odgadniete_litery++;
           if(odgadniete_litery==dlg_haslo) {
-            //
-            //
+            KoniecGry('Wygrałeś!');
           }
         } 
       }
@@ -52,10 +52,24 @@ $(document).ready(function () {
       if(flaga == false) {
         $(this).prop( "disabled", true );
         $(this).css("background-color","red");
-        
-        //
+
+        pomylki++;
+        console.log('Pomylka:' + pomylki + '/12');
+        $('#Img_wisielec').attr('src', './wisielec_' + pomylki + '.png');
       }
-      
+      if(pomylki > 11)
+      {
+        KoniecGry('Przegrałeś :(');
+      }
     });
   });
+
+  function KoniecGry(komunikat)
+  {
+    $('.litera').prop( "disabled", true )
+    setTimeout(() => {
+      // wyswietlenie komunikatu / przycisk zagraj ponownie / menu
+    }, 1500);
+  }
+
 });
