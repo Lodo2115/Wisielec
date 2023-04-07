@@ -100,7 +100,7 @@ main.kontener {
     position: absolute;
     left: 0; 
     right: 0; 
-    display: none;
+    display: inline-block;
 
 }
 #Div_Okno_Gry img {
