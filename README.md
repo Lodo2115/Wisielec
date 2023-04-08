@@ -1,4 +1,4 @@
 ### TODO:
 
-* Sklep z tłami
+* Dokończyć sklep
 * Optymalizacja kodu
