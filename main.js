@@ -2,6 +2,8 @@ var przyicski = 'AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŻŹ';
 var haslo;
 var pomylki = 0;
 var slowa = ["Krokodyl", "Piesek", "Ołtarz", "Księżniczka", "Pająk", "Pianina", "Tarcza", "Łuk", "Pogoda", "Rondo", "Flet", "Przepis", "Róża", "Skalpel", "Włos", "Dziób", "Hokej", "Kowal", "Ktoś", "Opona", "Kropka", "Ksiądz", "Biskup", "Pomarańcza", "Rosół", "Mucha", "Stemple", "Kaczor", "Krem", "Myszka", "Ramie", "Fala", "Podróż", "Żaluzja", "Bukiet", "Wino", "Brzoskwinia", "Jednorożec", "Szczypta", "Biżuteria", "Ołówek", "Stacja", "Plakat", "Kwiaty", "Lodowisko", "Łajno", "Kolano", "Płaszcz", "Sok", "Zegar", "Grzyb", "Parka", "Przykład", "Akrobata", "Młot", "Mrówka", "Harmonijka", "Kryzys", "Osioł", "Posag", "Zrąb", "Łyżka", "Anioł", "Szalik", "Walec", "Błoto", "Domofon", "Złoty", "Księżyc", "Muzyka", "Rumak", "Kociołek", "Ptaszek", "Ptasior", "Tarcza", "Ptasznik", "Słoik", "Słoń", "Słój", "Taksówka", "Żeglowanie", "Zwrot", "Bakłażan", "Fasolka", "Gąbka", "Kamper", "Tornister", "Głębia", "Prądnica", "Słomka", "Tęczowy", "Zderzenie", "Koncert", "Pistolet", "Jabłko", "Szczypior", "Zawodnik", "Bułka", "Złoto", "Kaktus", "Trawa", "Rynek", "Kwiat", "But", "Dzwonek", "Ucho", "Plaża", "Wiertarka", "Książka", "Gąsienica", "Lampa", "Kostka", "Maska", "Farba", "Okulary", "Ser", "Wino", "Słuchawki", "Drabina", "Słońce", "Śmieci", "Pociąg", "Kłos", "Koncert", "Wąż", "Kabel", "Pilnik", "Zamek", "Pingwin", "Gruszka", "Ołówek", "Smok", "Czekolada", "Samolot", "Ząb", "Płot", "Rower", "Chleb", "Guma", "Nóż", "Ludzie", "Woda", "Dłoń", "Dzwig", "Radio", "Dom", "Kamień", "Kocioł", "Słonecznik", "Szyba", "Skrzydło", "Koszyk", "Serce", "Ananas", "Drzewo", "Księżyc", "Hulajnoga", "Sklep", "Gwiazda", "Rakieta", "Pianino", "Łosoś", "Kula", "Okręt", "Kino", "Ogród", "Wędka", "Delfin", "Wiatrak", "Światło", "Stół", "Toster", "Śmigło", "Szampan", "Torba", "Deska", "Staw", "Grzejnik", "Balon", "Tłumik", "Stawka", "Kijek", "Taksówka", "Dusza", "Lustrzanka", "Ręcznik", "Zapałki", "Ksiądz", "Czarny", "Truskawka", "Jaskółka", "Kociołek", "Niedźwiedź", "Kieszeń", "Ogórek", "Kaczka", "Biurko", "Pochodnia", "Jezioro", "Ślimak", "Płaszcz", "Serpentyna", "Lodówka", "Tapeta", "Sówka", "Lampart", "Szafka", "Słuchacz", "Walizka", "Czołg", "Kotwica", "Skok", "Przegub", "Koniec", "Niedziela", "Łucznik", "Ośmiornica"];
+var sklepOtwarty = false;
+var punkty = 100;
 
 $(document).ready(function () {
 
@@ -18,6 +20,7 @@ $(document).ready(function () {
    function Gra(haslo) { 
     $('#I_Haslo').val('');
     $('#Puste_Haslo').hide();
+    $('#Sklep_Ikona').hide();
     haslo = haslo.toUpperCase();
     $('#Div_Haslo').hide();
     $('#Div_Okno_Gry').show();
@@ -56,15 +59,15 @@ $(document).ready(function () {
           $('#litery_haslo').text(litery);
           odgadniete_litery++;
           if(odgadniete_litery==dlg_haslo) {
-            KoniecGry('Zgadłeś!');
+            KoniecGry('Zgadłeś!<p style="font-size: 17.5px;">+50 puntków</p>');
+            punkty += 50;
           }
         } 
-        console.log(pomylki);
       }
       if(flaga === true) {
         $(this).prop( "disabled", true );
         $(this).css("background-color","green");
-        
+
       }
       if(flaga === false) {
         $(this).prop( "disabled", true );
@@ -106,6 +109,26 @@ $(document).ready(function () {
     Gra(haslo);
   });
 
+  $('#Sklep_Ikona').click(function () { 
+
+    if(!sklepOtwarty) 
+    {
+      $('#Sklep').show();
+      sklepOtwarty = true;
+      $('#Punkty').html("Punkty: " + punkty);
+    }
+    else 
+    {
+      $('#Sklep').hide();
+      sklepOtwarty = false;
+    }
+
+    $('.bg_sklep').click(function () { 
+      $('body').css('background-image',`url(./tla/${$(this).attr('id')}.jpg`);
+    });
+
+  });
+
   function KoniecGry(komunikat)
   {
     $('.litera').prop( "disabled", true )
@@ -124,6 +147,7 @@ $(document).ready(function () {
         $('#litery_haslo').remove();
         $('.litera').prop( "disabled", false).css('background-color', 'black');
         pomylki = 0;
+        $('#Sklep_Ikona').show();
         $('.litera, .przyciski_haslo').unbind('click');
         $('#Img_wisielec').attr('src', './wisielce/wisielec_0.png');
         $("#Div_Haslo").show() 
