@@ -33,7 +33,7 @@ main.kontener {
     z-index: 1
 }
 
-.litera, #B_Haslo {
+.litera, #B_Haslo, #L_Haslo {
     background-color: #000000;
     border-radius: 15px;
     box-sizing: border-box;
@@ -52,16 +52,16 @@ main.kontener {
 }
 
 
-.litera:disabled {
+.litera:disabled, #B_Haslo:disabled, #L_Haslo:disabled {
     pointer-events: none;
 }
   
-.litera:hover {
+.litera:hover, #B_Haslo:hover, #L_Haslo:hover {
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
 }
   
-.litera:active {
+.litera:active, #B_Haslo:active, #L_Haslo:active  {
     box-shadow: none;
     transform: translateY(0);
 }
