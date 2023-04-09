@@ -10,7 +10,7 @@ $(document).ready(function () {
 
   function init() { 
     $('#Div_Okno_Gry').hide();
-
+    //tworzenie przyciskow do wpisywania liter
     for (var i = 0; i < przyicski.length; i++) {
       if (i % 7 == 0 && i != 0) $('.przyciski_haslo').append('<br>');
       $('.przyciski_haslo').append('<button class="litera" id="' + przyicski[i] + '" value="'+przyicski[i]+'">' + przyicski[i] + '</button>');
@@ -30,7 +30,7 @@ $(document).ready(function () {
     var litery="";
     var odgadniete_litery=0;
     for (let i = 0; i < dlg_haslo; i++) {
-
+      //zamiana hasła na _
       if(haslo[i]==' ') 
       {
         tab_litery[i] = ' ';
@@ -45,10 +45,11 @@ $(document).ready(function () {
 
     }
     $('.przyciski_haslo').prepend("<p id='litery_haslo'>" + litery + "</p>");
-    
+    //obsługa przycisków od podawania liter
     $('.litera').click(function () {
       var litera = $(this).val(); 
       flaga = false;
+      //sprawdzanie podanej litery
       for (let i = 0; i < dlg_haslo; i++) {
         if(haslo[i] == litera) {
           flaga = true;
@@ -83,11 +84,11 @@ $(document).ready(function () {
       }
     });
     }
-
+   // blokowanie wprowadzenia znaku specjalnego lub cyfry
    $('#I_Haslo').on('keydown', function(event) {
-    // sprawdzenie czy wprowadzony znak jest znakiem specjalnym lub cyfrą
+   
     if ((event.keyCode < 65 || event.keyCode > 90) && event.keyCode !== 8 && event.keyCode !== 32) {
-      // blokowanie wprowadzenia znaku specjalnego lub cyfry
+      
       event.preventDefault();
     }
   });
@@ -109,7 +110,7 @@ $(document).ready(function () {
     haslo = slowa[Math.floor(Math.random() * slowa.length+1)];
     Gra(haslo);
   });
-
+  //sklep
   $('#Sklep_Ikona').click(function () { 
 
     if(!sklepOtwarty) 
