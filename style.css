@@ -106,9 +106,9 @@ main.kontener {
 #Div_Okno_Gry img {
     position: absolute;
     top: 50px;
-    left: -600px;
-    width: 420px;
-    height: 420px;
+    left: -500px;
+    width: 512px;
+    height: 512px;
     border: 0
 }
 

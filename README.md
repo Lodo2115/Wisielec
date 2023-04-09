@@ -1,4 +1,2 @@
-### TODO:
-
-* Grafika wisielca
-* Optymalizacja kodu
+# Wisielec
+Wykonany w jQuery.
