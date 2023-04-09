@@ -4,6 +4,7 @@ var pomylki = 0;
 var slowa = ["Krokodyl", "Piesek", "Ołtarz", "Księżniczka", "Pająk", "Pianina", "Tarcza", "Łuk", "Pogoda", "Rondo", "Flet", "Przepis", "Róża", "Skalpel", "Włos", "Dziób", "Hokej", "Kowal", "Ktoś", "Opona", "Kropka", "Ksiądz", "Biskup", "Pomarańcza", "Rosół", "Mucha", "Stemple", "Kaczor", "Krem", "Myszka", "Ramie", "Fala", "Podróż", "Żaluzja", "Bukiet", "Wino", "Brzoskwinia", "Jednorożec", "Szczypta", "Biżuteria", "Ołówek", "Stacja", "Plakat", "Kwiaty", "Lodowisko", "Łajno", "Kolano", "Płaszcz", "Sok", "Zegar", "Grzyb", "Parka", "Przykład", "Akrobata", "Młot", "Mrówka", "Harmonijka", "Kryzys", "Osioł", "Posag", "Zrąb", "Łyżka", "Anioł", "Szalik", "Walec", "Błoto", "Domofon", "Złoty", "Księżyc", "Muzyka", "Rumak", "Kociołek", "Ptaszek", "Ptasior", "Tarcza", "Ptasznik", "Słoik", "Słoń", "Słój", "Taksówka", "Żeglowanie", "Zwrot", "Bakłażan", "Fasolka", "Gąbka", "Kamper", "Tornister", "Głębia", "Prądnica", "Słomka", "Tęczowy", "Zderzenie", "Koncert", "Pistolet", "Jabłko", "Szczypior", "Zawodnik", "Bułka", "Złoto", "Kaktus", "Trawa", "Rynek", "Kwiat", "But", "Dzwonek", "Ucho", "Plaża", "Wiertarka", "Książka", "Gąsienica", "Lampa", "Kostka", "Maska", "Farba", "Okulary", "Ser", "Wino", "Słuchawki", "Drabina", "Słońce", "Śmieci", "Pociąg", "Kłos", "Koncert", "Wąż", "Kabel", "Pilnik", "Zamek", "Pingwin", "Gruszka", "Ołówek", "Smok", "Czekolada", "Samolot", "Ząb", "Płot", "Rower", "Chleb", "Guma", "Nóż", "Ludzie", "Woda", "Dłoń", "Dzwig", "Radio", "Dom", "Kamień", "Kocioł", "Słonecznik", "Szyba", "Skrzydło", "Koszyk", "Serce", "Ananas", "Drzewo", "Księżyc", "Hulajnoga", "Sklep", "Gwiazda", "Rakieta", "Pianino", "Łosoś", "Kula", "Okręt", "Kino", "Ogród", "Wędka", "Delfin", "Wiatrak", "Światło", "Stół", "Toster", "Śmigło", "Szampan", "Torba", "Deska", "Staw", "Grzejnik", "Balon", "Tłumik", "Stawka", "Kijek", "Taksówka", "Dusza", "Lustrzanka", "Ręcznik", "Zapałki", "Ksiądz", "Czarny", "Truskawka", "Jaskółka", "Kociołek", "Niedźwiedź", "Kieszeń", "Ogórek", "Kaczka", "Biurko", "Pochodnia", "Jezioro", "Ślimak", "Płaszcz", "Serpentyna", "Lodówka", "Tapeta", "Sówka", "Lampart", "Szafka", "Słuchacz", "Walizka", "Czołg", "Kotwica", "Skok", "Przegub", "Koniec", "Niedziela", "Łucznik", "Ośmiornica"];
 var sklepOtwarty = false;
 var punkty = 100;
+var zablokowaneTla = ['bg_1', 'bg_2', 'bg_3', 'bg_4', 'bg_5'];
 
 $(document).ready(function () {
 
@@ -115,7 +116,7 @@ $(document).ready(function () {
     {
       $('#Sklep').show();
       sklepOtwarty = true;
-      $('#Punkty').html("Punkty: " + punkty);
+      $('#Punkty').html("Punkty: " + punkty + "<br>(Koszt tła: 100 punktów)");
     }
     else 
     {
@@ -124,7 +125,20 @@ $(document).ready(function () {
     }
 
     $('.bg_sklep').click(function () { 
-      $('body').css('background-image',`url(./tla/${$(this).attr('id')}.jpg`);
+      if(jQuery.inArray($(this).attr('id'), zablokowaneTla) === -1)
+      {
+        $('body').css('background-image',`url(./tla/${$(this).attr('id')}.jpg`);
+        $(this).css('border','solid red 5px');
+        $('.bg_sklep').not(this).css('border','solid black 5px');
+      }
+      else if(punkty >= 100)
+      {
+        zablokowaneTla.splice( $.inArray($(this).attr('id'), zablokowaneTla), 1);
+        punkty -= 100;
+        $('#Punkty').html("Punkty: " + punkty + "<br>(Koszt tła: 100 punktów)");
+        $(this).css('opacity','100%');
+      }
+
     });
 
   });

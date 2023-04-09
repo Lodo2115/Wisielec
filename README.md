@@ -1,4 +1,4 @@
 ### TODO:
 
-* Dokończyć sklep
+* Grafika wisielca
 * Optymalizacja kodu
